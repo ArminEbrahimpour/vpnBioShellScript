@@ -1,0 +1,409 @@
+#!/bin/bash
+
+# VPN Server Configuration Script
+# Organized by Iranian carriers and international countries
+
+# Color codes for better display
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+# Function to display menu with colors
+display_menu() {
+    echo -e "${CYAN}================================${NC}"
+    echo -e "${CYAN}    VPN Server Selector${NC}"
+    echo -e "${CYAN}================================${NC}"
+    echo ""
+    
+    echo -e "${YELLOW}همراه اول (Hamrah-e Avval/MCI):${NC}"
+    echo "1) mci1.btaks.com (هوشمند)"
+    echo "2) mci.btaks.com (هوشمند)"
+    echo "3) mci.bcdnpro.com (ثابت)"
+    echo "4) s22.biovdns.com (ثابت)"
+    echo "5) s23.biovdns.com (ثابت)"
+    echo "6) s24.biovdns.com (ثابت)"
+    echo "7) s25.biovdns.com (ثابت)"
+    echo "8) s26.biovdns.com (ثابت)"
+    echo "9) s27.biovdns.com (ثابت)"
+    echo "10) s28.biovdns.com (ثابت)"
+    echo "11) s29.biovdns.com (ثابت)"
+    echo "12) s30.biovdns.com (ثابت)"
+    echo "13) s31.biovdns.com (ثابت)"
+    echo "14) s32.biovdns.com (ثابت)"
+    echo "15) s33.biovdns.com (ثابت)"
+    echo "16) s34.biovdns.com (ثابت)"
+    echo "17) s35.biovdns.com (ثابت)"
+    echo "18) s36.biovdns.com (ثابت)"
+    echo ""
+    
+    echo -e "${GREEN}ایرانسل و رایتل (Irancell & Rightel):${NC}"
+    echo "19) mci.bcdnpro.com (ایرانسل هوشمند)"
+    echo "20) s11.biovdns.com (ایرانسل)"
+    echo "21) s12.biovdns.com (ایرانسل)"
+    echo "22) s13.biovdns.com (ایرانسل)"
+    echo "23) s14.biovdns.com (ایرانسل)"
+    echo "24) s15.biovdns.com (ایرانسل)"
+    echo "25) s16.biovdns.com (ایرانسل)"
+    echo "26) s54.biovdns.com (ایرانسل)"
+    echo "27) s55.biovdns.com (ایرانسل)"
+    echo "28) s56.biovdns.com (ایرانسل)"
+    echo "29) s57.biovdns.com (ایرانسل)"
+    echo "30) s58.biovdns.com (ایرانسل)"
+    echo "31) s59.biovdns.com (ایرانسل)"
+    echo "32) s37.biovdns.com (ایرانسل)"
+    echo "33) s38.biovdns.com (ایرانسل)"
+    echo "34) s39.biovdns.com (ایرانسل)"
+    echo "35) s40.biovdns.com (ایرانسل)"
+    echo "36) s41.biovdns.com (ایرانسل)"
+    echo "37) s42.biovdns.com (ایرانسل)"
+    echo "38) s43.biovdns.com (ایرانسل)"
+    echo "39) s44.biovdns.com (ایرانسل)"
+    echo "40) s45.biovdns.com (ایرانسل)"
+    echo "41) s46.biovdns.com (ایرانسل)"
+    echo "42) s47.biovdns.com (ایرانسل)"
+    echo "43) s48.biovdns.com (ایرانسل)"
+    echo "44) s49.biovdns.com (ایرانسل)"
+    echo "45) s50.biovdns.com (ایرانسل)"
+    echo "46) s51.biovdns.com (ایرانسل)"
+    echo "47) s52.biovdns.com (ایرانسل)"
+    echo "48) s53.biovdns.com (ایرانسل)"
+    echo "49) s1.biovdns.com (ایرانسل)"
+    echo "50) s2.biovdns.com (ایرانسل)"
+    echo "51) s3.biovdns.com (ایرانسل)"
+    echo "52) s4.biovdns.com (ایرانسل)"
+    echo "53) s5.biovdns.com (ایرانسل)"
+    echo "54) s6.biovdns.com (ایرانسل)"
+    echo "55) s7.biovdns.com (ایرانسل)"
+    echo "56) s8.biovdns.com (ایرانسل)"
+    echo "57) s9.biovdns.com (ایرانسل)"
+    echo "58) s10.biovdns.com (ایرانسل)"
+    echo "59) s17.biovdns.com (ایرانسل)"
+    echo "60) s18.biovdns.com (ایرانسل)"
+    echo "61) s19.biovdns.com (ایرانسل)"
+    echo "62) s20.biovdns.com (ایرانسل)"
+    echo "63) s21.biovdns.com (ایرانسل)"
+    echo ""
+    
+    echo -e "${RED}International Servers:${NC}"
+    echo ""
+    echo -e "${BLUE}🇩🇪 Germany:${NC}"
+    echo "64) static.51.57.13.49.clients.your-server.de"
+    echo "65) static.79.37.140.128.clients.your-server.de"
+    echo "66) static.162.48.140.128.clients.your-server.de"
+    echo "67) static.11.142.75.5.clients.your-server.de"
+    echo "68) static.130.149.90.157.clients.your-server.de"
+    echo "69) static.93.189.46.78.clients.your-server.de"
+    echo "70) static.133.4.217.95.clients.your-server.de"
+    echo "71) osde19.biovdns.com"
+    echo "72) osde15.biovdns.com"
+    echo "73) osde16.biovdns.com"
+    echo "74) osde7.biovdns.com"
+    echo ""
+    
+    echo -e "${PURPLE}🇫🇮 Finland:${NC}"
+    echo "75) static.206.173.109.65.clients.your-server.de"
+    echo "76) static.121.207.181.135.clients.your-server.de"
+    echo "77) static.153.142.109.65.clients.your-server.de"
+    echo "78) static.219.248.108.65.clients.your-server.de"
+    echo "79) static.222.145.108.65.clients.your-server.de"
+    echo "80) static.119.142.216.95.clients.your-server.de"
+    echo "81) static.42.50.108.65.clients.your-server.de"
+    echo "82) static.211.216.216.95.clients.your-server.de"
+    echo "83) static.151.219.108.65.clients.your-server.de"
+    echo "84) static.215.49.108.65.clients.your-server.de"
+    echo "85) static.83.220.108.65.clients.your-server.de"
+    echo "86) static.191.199.181.135.clients.your-server.de"
+    echo "87) static.89.181.21.65.clients.your-server.de"
+    echo "88) static.228.57.108.65.clients.your-server.de"
+    echo "89) ofi14.biovdns.com"
+    echo "90) ofi16.biovdns.com"
+    echo "91) ofi17.biovdns.com"
+    echo "92) osfi16.biovdns.com"
+    echo "93) osfi17.biovdns.com"
+    echo "94) osfi10.biovdns.com"
+    echo "95) osfi12.biovdns.com"
+    echo "96) osfi13.biovdns.com"
+    echo "97) osfi14.biovdns.com"
+    echo "98) osfi4.biovdns.com"
+    echo "99) osfi7.biovdns.com"
+    echo ""
+    
+    echo -e "${CYAN}🇫🇷 France:${NC}"
+    echo "100) vps-ae5c1f6f.vps.ovh.net"
+    echo "101) vps-73e6131e.vps.ovh.net"
+    echo "102) vps-d2532f40.vps.ovh.net"
+    echo "103) vps-b162c22c.vps.ovh.net"
+    echo "104) vps-0208396d.vps.ovh.net"
+    echo "105) vps-505085d0.vps.ovh.net"
+    echo "106) vps-30800ad0.vps.ovh.net"
+    echo "107) vps-b5137056.vps.ovh.net"
+    echo "108) vps-2a819bf4.vps.ovh.net"
+    echo "109) vps-723f9661.vps.ovh.net"
+    echo ""
+    
+    echo -e "${GREEN}🇬🇧 United Kingdom:${NC}"
+    echo "110) ouk6.biovdns.com"
+    echo "111) ouk7.biovdns.com"
+    echo "112) ouk.biovdns.com:510 (London)"
+    echo "113) ouk3.biovdns.com (London)"
+    echo "114) ouk5.biovdns.com (London)"
+    echo ""
+    
+    echo -e "${YELLOW}🇳🇱 Netherlands:${NC}"
+    echo "115) onl6.biovdns.com"
+    echo "116) onl7.biovdns.com"
+    echo "117) onl17.biovdns.com"
+    echo "118) onl26.biovdns.com"
+    echo "119) onl.biovdns.com (Roosendaal)"
+    echo "120) onl2.biovdns.com (Amsterdam)"
+    echo "121) onl3.biovdns.com (Amsterdam)"
+    echo "122) onl4.biovdns.com (Amsterdam)"
+    echo "123) onl5.biovdns.com (Amsterdam)"
+    echo ""
+    
+    echo -e "${RED}🇵🇱 Poland:${NC}"
+    echo "124) vps-8aff9e72.vps.ovh.net"
+    echo "125) vps-faed0373.vps.ovh.net"
+    echo "126) vps-4b4ad4f6.vps.ovh.net"
+    echo "127) vps-ce9b178a.vps.ovh.net"
+    echo "128) vps-1c532b31.vps.ovh.net"
+    echo "129) vps-43f34d59.vps.ovh.net"
+    echo "130) vps-97c8f65f.vps.ovh.net"
+    echo ""
+    
+    echo -e "${BLUE}🇺🇸 United States:${NC}"
+    echo "131) ousa1.biovdns.com"
+    echo "132) ousa2.biovdns.com"
+    echo "133) ousa3.biovdns.com"
+    echo "134) ousa4.biovdns.com"
+    echo ""
+    
+    echo -e "${PURPLE}🇨🇭 Switzerland:${NC}"
+    echo "135) oswi8.biovdns.com"
+    echo "136) oswi9.biovdns.com"
+    echo "137) oswi10.biovdns.com"
+    echo "138) oswi12.biovdns.com"
+    echo "139) oswi13.biovdns.com"
+    echo "140) oswi.biovdns.com"
+    echo "141) oswi2.biovdns.com"
+    echo ""
+    
+    echo -e "${CYAN}================================${NC}"
+    echo -e "${GREEN}Enter server number (1-141) or 'q' to quit:${NC}"
+}
+
+# Function to get server based on selection
+get_server() {
+    case $1 in
+        # Hamrah-e Avval (MCI)
+        1) echo "mci1.btaks.com" ;;
+        2) echo "mci.btaks.com" ;;
+        3) echo "mci.bcdnpro.com" ;;
+        4) echo "s22.biovdns.com" ;;
+        5) echo "s23.biovdns.com" ;;
+        6) echo "s24.biovdns.com" ;;
+        7) echo "s25.biovdns.com" ;;
+        8) echo "s26.biovdns.com" ;;
+        9) echo "s27.biovdns.com" ;;
+        10) echo "s28.biovdns.com" ;;
+        11) echo "s29.biovdns.com" ;;
+        12) echo "s30.biovdns.com" ;;
+        13) echo "s31.biovdns.com" ;;
+        14) echo "s32.biovdns.com" ;;
+        15) echo "s33.biovdns.com" ;;
+        16) echo "s34.biovdns.com" ;;
+        17) echo "s35.biovdns.com" ;;
+        18) echo "s36.biovdns.com" ;;
+        
+        # Irancell
+        19) echo "mci.bcdnpro.com" ;;
+        20) echo "s11.biovdns.com" ;;
+        21) echo "s12.biovdns.com" ;;
+        22) echo "s13.biovdns.com" ;;
+        23) echo "s14.biovdns.com" ;;
+        24) echo "s15.biovdns.com" ;;
+        25) echo "s16.biovdns.com" ;;
+        26) echo "s54.biovdns.com" ;;
+        27) echo "s55.biovdns.com" ;;
+        28) echo "s56.biovdns.com" ;;
+        29) echo "s57.biovdns.com" ;;
+        30) echo "s58.biovdns.com" ;;
+        31) echo "s59.biovdns.com" ;;
+        32) echo "s37.biovdns.com" ;;
+        33) echo "s38.biovdns.com" ;;
+        34) echo "s39.biovdns.com" ;;
+        35) echo "s40.biovdns.com" ;;
+        36) echo "s41.biovdns.com" ;;
+        37) echo "s42.biovdns.com" ;;
+        38) echo "s43.biovdns.com" ;;
+        39) echo "s44.biovdns.com" ;;
+        40) echo "s45.biovdns.com" ;;
+        41) echo "s46.biovdns.com" ;;
+        42) echo "s47.biovdns.com" ;;
+        43) echo "s48.biovdns.com" ;;
+        44) echo "s49.biovdns.com" ;;
+        45) echo "s50.biovdns.com" ;;
+        46) echo "s51.biovdns.com" ;;
+        47) echo "s52.biovdns.com" ;;
+        48) echo "s53.biovdns.com" ;;
+        49) echo "s1.biovdns.com" ;;
+        50) echo "s2.biovdns.com" ;;
+        51) echo "s3.biovdns.com" ;;
+        52) echo "s4.biovdns.com" ;;
+        53) echo "s5.biovdns.com" ;;
+        54) echo "s6.biovdns.com" ;;
+        55) echo "s7.biovdns.com" ;;
+        56) echo "s8.biovdns.com" ;;
+        57) echo "s9.biovdns.com" ;;
+        58) echo "s10.biovdns.com" ;;
+        59) echo "s17.biovdns.com" ;;
+        60) echo "s18.biovdns.com" ;;
+        61) echo "s19.biovdns.com" ;;
+        62) echo "s20.biovdns.com" ;;
+        63) echo "s21.biovdns.com" ;;
+        
+        # Germany
+        64) echo "static.51.57.13.49.clients.your-server.de" ;;
+        65) echo "static.79.37.140.128.clients.your-server.de" ;;
+        66) echo "static.162.48.140.128.clients.your-server.de" ;;
+        67) echo "static.11.142.75.5.clients.your-server.de" ;;
+        68) echo "static.130.149.90.157.clients.your-server.de" ;;
+        69) echo "static.93.189.46.78.clients.your-server.de" ;;
+        70) echo "static.133.4.217.95.clients.your-server.de" ;;
+        71) echo "osde19.biovdns.com" ;;
+        72) echo "osde15.biovdns.com" ;;
+        73) echo "osde16.biovdns.com" ;;
+        74) echo "osde7.biovdns.com" ;;
+        
+        # Finland
+        75) echo "static.206.173.109.65.clients.your-server.de" ;;
+        76) echo "static.121.207.181.135.clients.your-server.de" ;;
+        77) echo "static.153.142.109.65.clients.your-server.de" ;;
+        78) echo "static.219.248.108.65.clients.your-server.de" ;;
+        79) echo "static.222.145.108.65.clients.your-server.de" ;;
+        80) echo "static.119.142.216.95.clients.your-server.de" ;;
+        81) echo "static.42.50.108.65.clients.your-server.de" ;;
+        82) echo "static.211.216.216.95.clients.your-server.de" ;;
+        83) echo "static.151.219.108.65.clients.your-server.de" ;;
+        84) echo "static.215.49.108.65.clients.your-server.de" ;;
+        85) echo "static.83.220.108.65.clients.your-server.de" ;;
+        86) echo "static.191.199.181.135.clients.your-server.de" ;;
+        87) echo "static.89.181.21.65.clients.your-server.de" ;;
+        88) echo "static.228.57.108.65.clients.your-server.de" ;;
+        89) echo "ofi14.biovdns.com" ;;
+        90) echo "ofi16.biovdns.com" ;;
+        91) echo "ofi17.biovdns.com" ;;
+        92) echo "osfi16.biovdns.com" ;;
+        93) echo "osfi17.biovdns.com" ;;
+        94) echo "osfi10.biovdns.com" ;;
+        95) echo "osfi12.biovdns.com" ;;
+        96) echo "osfi13.biovdns.com" ;;
+        97) echo "osfi14.biovdns.com" ;;
+        98) echo "osfi4.biovdns.com" ;;
+        99) echo "osfi7.biovdns.com" ;;
+        
+        # France
+        100) echo "vps-ae5c1f6f.vps.ovh.net" ;;
+        101) echo "vps-73e6131e.vps.ovh.net" ;;
+        102) echo "vps-d2532f40.vps.ovh.net" ;;
+        103) echo "vps-b162c22c.vps.ovh.net" ;;
+        104) echo "vps-0208396d.vps.ovh.net" ;;
+        105) echo "vps-505085d0.vps.ovh.net" ;;
+        106) echo "vps-30800ad0.vps.ovh.net" ;;
+        107) echo "vps-b5137056.vps.ovh.net" ;;
+        108) echo "vps-2a819bf4.vps.ovh.net" ;;
+        109) echo "vps-723f9661.vps.ovh.net" ;;
+        
+        # United Kingdom
+        110) echo "ouk6.biovdns.com" ;;
+        111) echo "ouk7.biovdns.com" ;;
+        112) echo "ouk.biovdns.com:510" ;;
+        113) echo "ouk3.biovdns.com" ;;
+        114) echo "ouk5.biovdns.com" ;;
+        
+        # Netherlands
+        115) echo "onl6.biovdns.com" ;;
+        116) echo "onl7.biovdns.com" ;;
+        117) echo "onl17.biovdns.com" ;;
+        118) echo "onl26.biovdns.com" ;;
+        119) echo "onl.biovdns.com" ;;
+        120) echo "onl2.biovdns.com" ;;
+        121) echo "onl3.biovdns.com" ;;
+        122) echo "onl4.biovdns.com" ;;
+        123) echo "onl5.biovdns.com" ;;
+        
+        # Poland
+        124) echo "vps-8aff9e72.vps.ovh.net" ;;
+        125) echo "vps-faed0373.vps.ovh.net" ;;
+        126) echo "vps-4b4ad4f6.vps.ovh.net" ;;
+        127) echo "vps-ce9b178a.vps.ovh.net" ;;
+        128) echo "vps-1c532b31.vps.ovh.net" ;;
+        129) echo "vps-43f34d59.vps.ovh.net" ;;
+        130) echo "vps-97c8f65f.vps.ovh.net" ;;
+        
+        # United States
+        131) echo "ousa1.biovdns.com" ;;
+        132) echo "ousa2.biovdns.com" ;;
+        133) echo "ousa3.biovdns.com" ;;
+        134) echo "ousa4.biovdns.com" ;;
+        
+        # Switzerland
+        135) echo "oswi8.biovdns.com" ;;
+        136) echo "oswi9.biovdns.com" ;;
+        137) echo "oswi10.biovdns.com" ;;
+        138) echo "oswi12.biovdns.com" ;;
+        139) echo "oswi13.biovdns.com" ;;
+        140) echo "oswi.biovdns.com" ;;
+        141) echo "oswi2.biovdns.com" ;;
+        
+        *) echo "" ;;
+    esac
+}
+
+# Main script execution
+
+clear
+display_menu
+read -r choice
+
+if [[ "$choice" == "q" || "$choice" == "Q" ]]; then
+    echo -e "${YELLOW}Exiting...${NC}"
+    exit 0
+fi
+
+# Validate input
+if ! [[ "$choice" =~ ^[0-9]+$ ]] || [ "$choice" -lt 1 ] || [ "$choice" -gt 141 ]; then
+    echo -e "${RED}Invalid selection. Please enter a number between 1-141 or 'q' to quit.${NC}"
+    read -p "Press Enter to continue..."
+    continue
+fi
+
+server=$(get_server "$choice")
+
+if [ -z "$server" ]; then
+    echo -e "${RED}Invalid server selection.${NC}"
+    read -p "Press Enter to continue..."
+    continue
+fi
+
+echo -e "${GREEN}Connecting to: $server${NC}"
+echo -e "${YELLOW}Running: sudo openconnect $server --no-dtls${NC}"
+echo ""
+
+# Execute the openconnect command
+sudo openconnect "$server" --no-dtls
+
+# After disconnection, ask if user wants to connect to another server
+echo ""
+echo -e "${YELLOW}Connection ended.${NC}"
+read -p "Press Enter to return to menu or 'q' to quit: " continue_choice
+
+if [[ "$continue_choice" == "q" || "$continue_choice" == "Q" ]]; then
+    echo -e "${YELLOW}Goodbye!${NC}"
+    exit 0
+fi
+
